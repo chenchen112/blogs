@@ -41,17 +41,17 @@
 
 | 粒子数量 | 0个 | 5000个 | 8000个 | 10000个 | 15000个 | 20000个 | 30000个 |
 | --- | --- | --- | --- | --- | ---| --- | --- |
-|  FPS  | ![58.2](/public/FPS58.2.png) | ![54.6](/public/FPS54.6.png) | ![40.8](/public/FPS40.8.png) | ![34.8](/public/FPS34.8.png) | ![24.6](/public/FPS24.6.png) | ![20.4](/public/FPS20.4.png) | ![12.6](/public/FPS12.6.png) |
+|  FPS  | ![58.2](@/FPS58.2.png) | ![54.6](@/FPS54.6.png) | ![40.8](@/FPS40.8.png) | ![34.8](@/FPS34.8.png) | ![24.6](@/FPS24.6.png) | ![20.4](@/FPS20.4.png) | ![12.6](@/FPS12.6.png) |
 
 5000 个和 50000 个效果如下：
 
 <div style="text-align:center">
-<img src="../public/CPU5000.gif" width="48%"/> <img src="../public/CPU50000.gif" width="48%"//>
+<img src="@/CPU5000.gif" width="48%"/> <img src="@/CPU50000.gif" width="48%"/>
 </div>
 
 ### CPU 实现
 
-```
+``` typescript
 import { Easing, Tween, update } from '@tweenjs/tween.js';
 
 const PointNum = 10000;
@@ -144,11 +144,11 @@ const points = getRandomCubePoints(cubePs);
 一百万个效果如下：
 
 <div style="text-align:center">
-<img src="../public/GPU100w.gif"/>
+<img src="@/GPU100w.gif"/>
 </div>
 
 ### GPU 实现
-```
+``` typescript
 import {
   AdditiveBlending,
   BufferGeometry,

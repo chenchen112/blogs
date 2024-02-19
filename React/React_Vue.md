@@ -1,6 +1,6 @@
 # React 与 Vue
 
-<div style="text-align:center"><img src="../public/react-vs-vue.png"/></div>
+<div style="text-align:center"><img src="@/react-vs-vue.png"/></div>
 
 ## 对比
 

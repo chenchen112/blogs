@@ -6,7 +6,7 @@ TCP是基于连接的协议，也就是说，在正式收发数据之前，必�
 
 ## 三次握手
 
-<div style="text-align:center"><img src="../public/TCPConnect.png"/></div>
+<div style="text-align:center"><img src="@/TCPConnect.png"/></div>
 
 在握手之前，主动打开连接的客户端结束 CLOSE 阶段，被动打开的服务器也结束 CLOSE 阶段，并进入 LISTEN 阶段。随后进入三次握手阶段
 
@@ -33,7 +33,7 @@ TCP是基于连接的协议，也就是说，在正式收发数据之前，必�
 
 ### 四次挥手
 
-<div style="text-align:center"><img src="../public/TCPDisconnect.png"/></div>
+<div style="text-align:center"><img src="@/TCPDisconnect.png"/></div>
 
 在结束之前，通信双方都是处于 ESTABLISHED 状态，然后其中一方主动断开连接。
 下面假如客户端先主动断开连接

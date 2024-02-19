@@ -6,7 +6,7 @@
 - **extends**  
   配置选项，最终结果会将派生配置合并到基础配置的结果，可以省略配置名称中的 `eslint-config-` 前缀。如 `airbnb-base` 会被解析为 `eslint-config-airbnb-base`。配置文件使用扩展后，就可以继承另一个配置文件的所有特征（包括规则、插件和语言选项）并修改所有选项
 
-  ```
+  ``` typescript
     // extends 将继承 airbnb-base 所有配置，如下：
     extends: ['airbnb-base']
 
@@ -24,7 +24,7 @@
 - **plugins**  
   插件选项，为 ESLint 添加各种扩展功能的包，可以省略包名中的 `eslint-plugin-` 前缀。一个插件可以添加新的规则和导出可共享的配置，`extends` 的使用顺序有关系，顺序靠后的将会对已定义的配置产生影响，`plugin` 的声明顺序无关
 
-  ```
+  ``` typescript
     // 仅添加新的 rule 的定义，并不开启或禁用
     plugins: ["react"],  
     
@@ -55,7 +55,7 @@
   - "warn" or 1 - turn the rule on as a warning
   - "error" or 2 - turn the rule on as an error
   - 需要增加配置选项时，如：
-    ```
+    ``` typescript
     "max-lines": ["error", { "max": 200, "skipBlankLines": true, "skipComments": true }]
     "quotes": ["error", "single", "avoid-escape"]
     ```
@@ -92,7 +92,7 @@
 
 ## 参考配置
 
-```
+``` typescript
   // package.json
   "@typescript-eslint/eslint-plugin": "5.54.1",
   "@typescript-eslint/parser": "5.54.1",
@@ -109,7 +109,7 @@
   "eslint-plugin-unicorn": "40.0.0",
 ```
 
-```
+``` typescript
   // .eslintrc
   module.exports = {
     extends: [

@@ -2,18 +2,31 @@ import { defineConfig } from "vuepress/config";
 
 export default defineConfig({
   base: "/blogs/",
-  locales: {
-    "/": {
-      lang: "zh-CN",
-      title: "ChenChen112",
-      description: "blogs react three lint http frontend",
+  title: "一些记录",
+  description: "blogs react three lint http frontend",
+  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+  plugins: ["@vuepress/plugin-medium-zoom", "@vuepress/plugin-back-to-top"],
+  configureWebpack: {
+    resolve: {
+      alias: {
+        "@": "/img",
+      },
     },
+  },
+  markdown: {
+    lineNumbers: true,
   },
   themeConfig: {
     editLinks: true,
     nav: [{ text: "Github", link: "https://github.com/chenchen112/blogs" }],
-    logo: "https://avatars.githubusercontent.com/u/58901888?v=4",
+    logo: "/Avatar.jpg",
     sidebarDepth: 0,
+    lastUpdated: "更新于",
+    repo: "chenchen112/blogs",
+    repoLabel: "查看源码",
+    docsBranch: "main",
+    editLinkText: "编辑",
+    smoothScroll: true,
     sidebar: [
       {
         title: "misc",

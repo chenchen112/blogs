@@ -3,7 +3,7 @@
 项目管理的三种经典模式
 
 <div style="text-align:center">
-<img src="../public/repo.png"/>
+<img src="@/repo.png"/>
 </div>
 
 ## 单体应用开发
@@ -60,7 +60,7 @@
 
 前端目前最主流的三款包管理工具 `npm7+`、`yarn`、`pnpm` 都已经原生支持 `workspaces` 模式,通过 `workspaces` 功能来支持 Monorepo 模式。workspaces 是指支持在一个代码库中最顶层管理多个项目或模块的能力。
 
-```
+``` typescript
 // package.json
 "workspaces": [ "packages/a", "packages/b" ]
 ```

@@ -12,7 +12,7 @@
 
 ## 参考配置
 
-```
+``` typescript
   "stylelint": "^15.2.0",
   "stylelint-config-css-modules": "4.2.0",
   // "stylelint-config-prettier": "9.0.5",
@@ -20,7 +20,7 @@
   "stylelint-declaration-block-no-ignored-properties": "2.7.0"
 ```
 
-```
+``` typescript
   // ..stylelintrc.js
   extends: [
     'stylelint-config-standard',

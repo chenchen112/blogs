@@ -4,13 +4,13 @@ Prettier 插件直接安装即可，无需配置
 
 ## 参考配置
 
-```
+``` typescript
   "prettier": "^2.8.4",
   "prettier-plugin-packagejson": "2.4.3",
   "prettier-plugin-two-style-order": "1.0.1",
 ```
 
-```
+``` typescript
 module.exports = {
   singleQuote: true,
   trailingComma: 'all',
