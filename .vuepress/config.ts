@@ -1,7 +1,7 @@
 import { defineConfig } from "vuepress/config";
 
 export default defineConfig({
-  base: "/blog/",
+  base: "/blogs/",
   locales: {
     "/": {
       lang: "zh-CN",
@@ -11,7 +11,7 @@ export default defineConfig({
   },
   themeConfig: {
     editLinks: true,
-    nav: [{ text: "Github", link: "https://github.com/chenchen112/blog" }],
+    nav: [{ text: "Github", link: "https://github.com/chenchen112/blogs" }],
     logo: "https://avatars.githubusercontent.com/u/58901888?v=4",
     sidebarDepth: 0,
     sidebar: [

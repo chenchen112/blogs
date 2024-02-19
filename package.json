@@ -1,9 +1,9 @@
 {
-  "name": "blog",
+  "name": "blogs",
   "version": "1.0.0",
-  "description": "blog",
+  "description": "blogs",
   "main": "index.js",
-  "repository": "git@github.com:chenchen112/blog.git",
+  "repository": "git@github.com:chenchen112/blogs.git",
   "author": "kl <1125561620@qq.com>",
   "license": "MIT",
   "scripts": {
