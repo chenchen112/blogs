@@ -13,6 +13,7 @@
   "devDependencies": {
     "vuepress": "^1.9.10",
     "@vuepress/plugin-medium-zoom": "1.9.10",
-    "@vuepress/plugin-back-to-top": "1.9.10"
+    "@vuepress/plugin-back-to-top": "1.9.10",
+    "moment": "2.30.1"
   }
 }

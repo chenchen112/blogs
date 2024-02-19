@@ -1,11 +1,24 @@
 import { defineConfig } from "vuepress/config";
+import moment from "moment";
 
 export default defineConfig({
   base: "/blogs/",
   title: "一些记录",
   description: "blogs react three lint http frontend",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
-  plugins: ["@vuepress/plugin-medium-zoom", "@vuepress/plugin-back-to-top"],
+  plugins: [
+    ["@vuepress/plugin-medium-zoom"],
+    ["@vuepress/plugin-back-to-top"],
+    [
+      "@vuepress/last-updated",
+      {
+        transformer: (timestamp) => {
+          moment.locale("zh-CN");
+          return moment(timestamp).fromNow();
+        },
+      },
+    ],
+  ],
   configureWebpack: {
     resolve: {
       alias: {
