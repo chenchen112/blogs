@@ -43,7 +43,7 @@ export default defineConfig({
     sidebar: [
       {
         title: "misc",
-        children: ["/misc/monorepo"],
+        children: ["/misc/monorepo", "/misc/Laptop"],
       },
       {
         title: "HTTP",
