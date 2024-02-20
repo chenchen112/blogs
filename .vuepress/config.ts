@@ -27,7 +27,7 @@ export default defineConfig({
     },
   },
   markdown: {
-    lineNumbers: true,
+    lineNumbers: false, // 显示代码块的行数
   },
   themeConfig: {
     editLinks: true,
@@ -42,8 +42,8 @@ export default defineConfig({
     smoothScroll: true,
     sidebar: [
       {
-        title: "misc",
-        children: ["/misc/monorepo", "/misc/Laptop"],
+        title: "CSS",
+        children: ["/CSS/className"],
       },
       {
         title: "HTTP",
@@ -60,6 +60,14 @@ export default defineConfig({
       {
         title: "Three",
         children: ["/Three/particles", "/Three/notes"],
+      },
+      {
+        title: "Webpack",
+        children: ["/Webpack/notes"],
+      },
+      {
+        title: "misc",
+        children: ["/misc/monorepo", "/misc/Laptop"],
       },
     ],
   },
