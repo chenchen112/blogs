@@ -3,8 +3,8 @@ import moment from "moment";
 
 export default defineConfig({
   base: "/blogs/",
-  title: "一些记录",
-  description: "blogs react three lint http frontend",
+  title: "个人博客",
+  description: "blogs",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   plugins: [
     ["@vuepress/plugin-medium-zoom"],
@@ -43,31 +43,43 @@ export default defineConfig({
     sidebar: [
       {
         title: "CSS",
-        children: ["/CSS/className"],
+        collapsable: false,
+        children: ["/CSS/BFC", "/CSS/className"],
       },
       {
         title: "HTTP",
-        children: ["/HTTP/HTTP_version", "/HTTP/HTTP", "/HTTP/TCP"],
+        collapsable: false,
+        children: ["/HTTP/TCP", "/HTTP/HTTP_version", "/HTTP/HTTP"],
       },
       {
         title: "Lint",
+        collapsable: false,
         children: ["/Lint/Eslint", "/Lint/Prettier", "/Lint/StyleLint"],
       },
       {
         title: "React",
+        collapsable: false,
         children: ["/React/React_Vue"],
       },
       {
-        title: "Three",
-        children: ["/Three/particles", "/Three/notes"],
+        title: "Three.js",
+        collapsable: false,
+        children: ["/Three/notes", "/Three/particles"],
       },
       {
         title: "Webpack",
+        collapsable: false,
         children: ["/Webpack/notes"],
       },
       {
         title: "misc",
+        collapsable: false,
         children: ["/misc/monorepo", "/misc/Laptop"],
+      },
+      {
+        title: "译文",
+        collapsable: false,
+        children: ["/Translation/LearnRegexTheEasyWay"],
       },
     ],
   },

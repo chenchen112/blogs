@@ -1,4 +1,6 @@
-# Three.js 技巧
+# 笔记
+
+记一些干货
 
 ## 性能优化
 
@@ -7,7 +9,7 @@
   - 使用同一材质对象
 - 离屏渲染
   - OffscreenCanvas
-  - WebWorker
+  - WebWorker(workerpool)
 - remove 并不能完全释放内存
   - 针对 material 和 texture 需要手动 dispose
 
@@ -35,3 +37,19 @@
 - 3D 文字实现思路
   - FontLoader 加载字体包
   - MeshBasicMaterial + TextGeometry
+- Line 更新后需要手动调用 computeLineDistances 以恢复虚线效果
+- CSS2DObject 和 CSS3DObject 区别在于 CSS2DObject 为固定大小，不随镜头远近而放大缩小
+- onAfterRender 和 onBeforeRender 的使用
+- 计算对象绕顶点旋转指定角度的变换矩阵
+  ``` typescript
+  getRotationMatrix(point: Vector3, angle: number) {
+    const translation = new Matrix4().makeTranslation(point.x, point.y, point.z);
+    const inverseTranslation = translation.clone().invert();
+    const rotationMatrix = new Matrix4();
+    rotationMatrix.makeRotationFromEuler(new Euler(0, 0, angle, 'XYZ'));
+    const finalMatrix = new Matrix4();
+    finalMatrix.multiplyMatrices(translation, rotationMatrix);
+    finalMatrix.multiply(inverseTranslation);
+    return finalMatrix;
+  }
+  ```
