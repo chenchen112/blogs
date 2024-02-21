@@ -6,9 +6,6 @@ heroText: 个人博客
 tagline: 要一直写点什么才行
 actionText: 查看 →
 actionLink: /CSS/BFC
-# features:
-# - title: 简洁至上
-#   details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
 ---
 
 # Blogs
