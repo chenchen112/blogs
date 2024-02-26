@@ -40,7 +40,7 @@
 - Line 更新后需要手动调用 computeLineDistances 以恢复虚线效果
 - CSS2DObject 和 CSS3DObject 区别在于 CSS2DObject 为固定大小，不随镜头远近而放大缩小
 - onAfterRender 和 onBeforeRender 的使用
-- 计算对象绕顶点旋转指定角度的变换矩阵
+- 计算对象绕顶点旋转指定角度的变换矩阵(矩阵变换基于自身坐标系)
   ``` typescript
   getRotationMatrix(point: Vector3, angle: number) {
     const translation = new Matrix4().makeTranslation(point.x, point.y, point.z);
