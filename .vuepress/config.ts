@@ -74,7 +74,13 @@ export default defineConfig({
       {
         title: "misc",
         collapsable: false,
-        children: ["/misc/monorepo", "/misc/Laptop"],
+        children: [
+          "/misc/monorepo",
+          "/misc/Laptop",
+          "/misc/V8",
+          "/misc/WechatLogin",
+          "/misc/movie",
+        ],
       },
       {
         title: "译文",

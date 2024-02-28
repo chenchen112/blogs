@@ -224,3 +224,8 @@
   };
 
 ```
+
+
+## 其它
+
+- Sonarqube  => eslint-plugin-sonarjs

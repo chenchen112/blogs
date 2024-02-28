@@ -1,7 +1,7 @@
 ---
 pageClass: custom-page-class
 ---
-# 正则表达式
+# Learn regex the easy way
 
 > 正则表达式是一组由字母和符号组成的特殊文本，它可以用来从文本中找出满足你想要的格式的句子。
 

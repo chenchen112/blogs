@@ -1,17 +1,7 @@
----
-home: true
-pageClass: home-page-class
-heroImage: /Avatar.jpg
-heroText: 个人博客
-tagline: 要一直写点什么才行
-actionText: 查看 →
-actionLink: /CSS/BFC
----
-
 # Blogs
 
 开始于 2024 年初，趁着没有那么忙。
 
 会记录一些前端技术相关的干货，工作中的一些实践，做一些整理和分类。
 
-也会记录一些工作以外的琐事，随手抽空记录，目的在于自我沉淀。
+也会记录一些工作以外的日常琐事，随手抽空记录，目的在于自我积累自我沉淀。
