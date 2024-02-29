@@ -33,3 +33,9 @@
   ```
 
 - `SplitChunksPlugin`和`MiniCssExtractPlugin`可通过代码分割实现按需加载
+- webpack5 以下版本可通过 [work-loader](https://www.npmjs.com/package/worker-loader) 加载 webWorker 模块，但会导致重复打包
+- webpack5 可通过以下方式加载 webWorker
+  ``` typescript
+    // https://github.com/webpack/webpack/issues/6472
+  const worker = new Worker(new URL('./offscreen.worker.ts', import.meta.url))
+  ```
