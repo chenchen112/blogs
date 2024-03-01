@@ -69,12 +69,13 @@ export default defineConfig({
       {
         title: "Webpack",
         collapsable: false,
-        children: ["/Webpack/notes"],
+        children: ["/Webpack/optimization", "/Webpack/notes"],
       },
       {
         title: "misc",
         collapsable: false,
         children: [
+          "/misc/git",
           "/misc/monorepo",
           "/misc/Laptop",
           "/misc/V8",

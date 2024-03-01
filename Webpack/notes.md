@@ -39,3 +39,5 @@
     // https://github.com/webpack/webpack/issues/6472
   const worker = new Worker(new URL('./offscreen.worker.ts', import.meta.url))
   ```
+- [chunk 与 bundle](https://www.cnblogs.com/skychx/p/webpack-module-chunk-bundle.html)
+- CleanWebpackPlugin 用于删除旧的打包文件
