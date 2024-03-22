@@ -80,6 +80,7 @@ export default defineConfig({
           "/misc/Laptop",
           "/misc/V8",
           "/misc/WechatLogin",
+          "/misc/js-questions",
           "/misc/movie",
         ],
       },
