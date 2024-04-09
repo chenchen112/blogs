@@ -77,6 +77,11 @@ export default defineConfig({
         ],
       },
       {
+        title: "手写题",
+        collapsable: false,
+        children: ["/handWriting/debounce", "/handWriting/throttle"],
+      },
+      {
         title: "译文",
         collapsable: false,
         children: ["/Translation/LearnRegexTheEasyWay"],
