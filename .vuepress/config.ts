@@ -1,5 +1,4 @@
 import { defineConfig } from "vuepress/config";
-import moment from "moment";
 
 export default defineConfig({
   base: "/blogs/",
@@ -9,15 +8,7 @@ export default defineConfig({
   plugins: [
     ["@vuepress/plugin-medium-zoom"],
     ["@vuepress/plugin-back-to-top"],
-    [
-      "@vuepress/last-updated",
-      {
-        transformer: (timestamp) => {
-          moment.locale("zh-CN");
-          return moment(timestamp).fromNow();
-        },
-      },
-    ],
+    ["@vuepress/last-updated"],
   ],
   configureWebpack: {
     resolve: {
@@ -82,6 +73,7 @@ export default defineConfig({
           "/misc/WechatLogin",
           "/misc/js-questions",
           "/misc/movie",
+          "/misc/insideGit",
         ],
       },
       {
