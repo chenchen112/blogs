@@ -40,7 +40,12 @@ export default defineConfig({
       {
         title: "HTTP",
         collapsable: false,
-        children: ["/HTTP/TCP", "/HTTP/HTTP_version", "/HTTP/HTTP"],
+        children: [
+          "/HTTP/TCP",
+          "/HTTP/HTTP_version",
+          "/HTTP/HTTP",
+          "/HTTP/HTTPS",
+        ],
       },
       {
         title: "Lint",
