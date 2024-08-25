@@ -1,4 +1,4 @@
-# 优化 className
+# 压缩生产环境的 ClassName
 
 ## 背景
 
@@ -10,9 +10,9 @@
 
 ## 实现
 
-webpack 打包过程中，通过自定义`css-loader`的`getLocalIdent`参数实现自定义类名
+webpack 打包过程中，通过自定义 `css-loader` 的 `getLocalIdent` 参数实现自定义类名
 
-定义类名生成函数`generateScopedName`如下：
+定义类名生成函数 `generateScopedName` 如下：
 
 ``` typescript
 const slash = require('slash');
@@ -46,7 +46,7 @@ function generateScopedName(name, file) {
 
 ```
 
-参考 [instr](https://github.com/anatol-grabowski/incstr) 的实现方式生成增量字符串，`createUniqueIdGenerator`实现如下
+参考 [instr](https://github.com/anatol-grabowski/incstr) 的实现方式生成增量字符串，`createUniqueIdGenerator` 实现如下
 
 ``` typescript
 
@@ -146,7 +146,7 @@ const createUniqueIdGenerator = () => {
     do {
       // Class name cannot start with a number.
       nextId = generateNextId();
-    } while (/^[0-9].*/.test(nextId));
+    } while (/ ^ [0-9].*/.test(nextId));
 
     index[name] = nextId;
 
@@ -160,3 +160,4 @@ const createUniqueIdGenerator = () => {
 <div style="text-align:center">
 <img src="@/className_before.png" width="48%"/> <img src="@/className_after.png" width="48%"/>
 </div>
+
