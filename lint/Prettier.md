@@ -1,5 +1,7 @@
 # [Prettier](https://prettier.io/docs/en/index.html)
 
+标签：`Prettier`
+
 ## 常见插件
 
 Prettier 插件直接安装即可，无需配置
@@ -41,4 +43,3 @@ module.exports = {
   ],
 };
 ```
-

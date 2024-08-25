@@ -1,8 +1,10 @@
 # [Eslint](https://eslint.org/docs/latest/rules/)
 
+标签：`EsLint`
+
 ## [config](https://zh-hans.eslint.org/docs/latest/use/configure)
 
-- **extends**  
+- **extends**
   配置选项，最终结果会将派生配置合并到基础配置的结果，可以省略配置名称中的 `eslint-config-` 前缀。如 `airbnb-base` 会被解析为 `eslint-config-airbnb-base`。配置文件使用扩展后，就可以继承另一个配置文件的所有特征（包括规则、插件和语言选项）并修改所有选项
 
   ``` typescript
@@ -225,6 +227,3 @@
 ```
 
 
-## 其它
-
-- Sonarqube  => eslint-plugin-sonarjs

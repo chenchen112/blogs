@@ -1,5 +1,7 @@
 # 压缩生产环境的 ClassName
 
+标签：`Webpack` `ClassName`
+
 ## 背景
 
 开发环境中，为了方便调试和检查样式，会使用有语义的 className
@@ -15,6 +17,7 @@ webpack 打包过程中，通过自定义 `css-loader` 的 `getLocalIdent` 参�
 定义类名生成函数 `generateScopedName` 如下：
 
 ``` typescript
+
 const slash = require('slash');
 // 短 id 生成器
 const createUniqueIdGenerator = require('./createUniqueIdGenerator.js');
@@ -156,7 +159,33 @@ const createUniqueIdGenerator = () => {
 
 ```
 
-## 效果对比  
+## 效果对比
+
+<div style="text-align:center">
+<img src="@/className_before.png" width="48%"/> <img src="@/className_after.png" width="48%"/>
+</div>
+
+
+      return index[name];
+    }
+
+    let nextId;
+
+    do {
+      // Class name cannot start with a number.
+      nextId = generateNextId();
+    } while (/ ^ [0-9].*/.test(nextId));
+
+    index[name] = nextId;
+
+    return index[name];
+  };
+};
+
+```
+
+## 效果对比
+
 <div style="text-align:center">
 <img src="@/className_before.png" width="48%"/> <img src="@/className_after.png" width="48%"/>
 </div>

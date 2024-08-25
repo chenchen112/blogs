@@ -1,5 +1,7 @@
 # [Javascript-questions](https://github.com/lydiahallie/javascript-questions/blob/master/zh-CN/README-zh_CN.md)
 
+标签：`Javascript`
+
 发现一个 js 题库，记录一下易错题
 
 ---

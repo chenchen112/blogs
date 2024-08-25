@@ -1,5 +1,7 @@
 # 微信登陆的实现
 
+标签：`微信登陆`
+
 ## OAuth2.0 授权机制
 
 > OAuth 2.0 is the industry-standard protocol for authorization. OAuth 2.0 focuses on client developer simplicity while providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices. 
@@ -223,24 +225,6 @@ export default function WechatQRCode({
 
   return <div className={styles.qrCode} id={WechatQRCodeContainerId} />;
 }
-
-
-```
-
-## Tips
-
-1. AppSecret， accessToken， refreshToken 是应用接口使用密钥，泄漏后将可能导致应用数据泄漏、应用的用户数据泄漏等高风险后果；存储在客户端，极有可能被恶意窃取；
-建议将 AppSecret、 accessToken 放在服务器
-2. WxLoginParam.state 可用于防止 csrf 攻击，建议第三方带上该参数，可设置为简单的随机数加 session 进行校验
-3. WxLoginParam.href（自定义二维码样式） ，如果是链接必须是 https ，除了放链接还可以将写好的样式文件进行 base64 转码
-4. 授权作用域（ scope）代表用户授权给第三方的接口权限，网页应用目前仅填写 'snsapi_login'
-5. code 的超时时间为 10 分钟， access_token 有效期为 2 个小时， refresh_token 有效期 30 天
-6. 本地调试会有跨域的问题，会比较麻烦
-
-
-## 参考
-1. [ 微信官方开发文档 ](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)
-2. [OAuth2.0](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
 
 
 ```
