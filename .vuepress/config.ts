@@ -32,21 +32,27 @@ export default defineConfig({
     editLinkText: " 编辑 ",
     smoothScroll: true,
     sidebar: [
-      "/misc/WechatLogin",
-      "/misc/JsQuestions",
-      "/misc/ClassName",
-      "/misc/Particles",
       {
-        title: "Lint 配置参考 ",
-        collapsable: false,
-        children: ["/lint/Eslint", "/lint/Prettier", "/lint/StyleLint"],
-      },
-      {
-        title: " 翻译 ",
+        title: "2024",
         collapsable: false,
         children: [
-          "/translation/SweepAndPrune",
-          "/translation/LearnRegexTheEasyWay",
+          "/misc/WechatLogin",
+          "/misc/ClassName",
+          "/misc/Particles",
+          "/misc/JsQuestions",
+          {
+            title: "Lint 配置参考 ",
+            collapsable: false,
+            children: ["/lint/Eslint", "/lint/Prettier", "/lint/StyleLint"],
+          },
+          {
+            title: " 翻译 ",
+            collapsable: false,
+            children: [
+              "/translation/SweepAndPrune",
+              "/translation/LearnRegexTheEasyWay",
+            ],
+          },
         ],
       },
     ],

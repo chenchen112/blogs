@@ -4,12 +4,12 @@
 
 ## 常见插件
 
-| 名称                                                                                                                                 | 说明                       |
-| ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
-| [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)                                                 | 开启常规的一些 rules       |
-| [stylelint-config-css-modules](https://www.npmjs.com/package/stylelint-config-css-modules)                                           | 支持 css modules 的语法    |
-| [stylelint-config-prettier](https://www.npmjs.com/package/stylelint-config-prettier)                                                 | 解决和 prettier 冲突的规则 |
-| [stylelint-declaration-block-no-ignored-properties](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) | 特定组合下的无效属性       |
+| 名称                                                                                                                                 | 说明                         |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- |
+| [stylelint-config-standard](https://www.npmjs.com/package/stylelint-config-standard)                                                 | 开启常规的一些 rules         |
+| [stylelint-config-css-modules](https://www.npmjs.com/package/stylelint-config-css-modules)                                           | 支持 CSS modules 的语法      |
+| [stylelint-config-prettier](https://www.npmjs.com/package/stylelint-config-prettier)                                                 | 解决和 `Prettier` 冲突的规则 |
+| [stylelint-declaration-block-no-ignored-properties](https://www.npmjs.com/package/stylelint-declaration-block-no-ignored-properties) | 特定组合下的无效属性         |
 
 
 ## 参考配置

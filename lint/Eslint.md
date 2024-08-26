@@ -52,17 +52,17 @@
   ```
 
 - **rules**  
-  - "off" or 0 - turn the rule off
-  - "warn" or 1 - turn the rule on as a warning
-  - "error" or 2 - turn the rule on as an error
+  - `off` or `0` - turn the rule off
+  - `warn` or `1` - turn the rule on as a warning
+  - `error` or `2` - turn the rule on as an error
   - 需要增加配置选项时，如：
     ``` typescript
     "max-lines": ["error", { "max": 200, "skipBlankLines": true, "skipComments": true }]
     "quotes": ["error", "single", "avoid-escape"]
     ```
-- overrides：可用作针对某些文件覆盖通用配置
+- `overrides`：可用作针对某些文件覆盖通用配置
   
-- root， env， parseOptions， globals...
+- `root`， `env`， `parseOptions`， `globals`...
 
 ## 级联
 
@@ -74,22 +74,22 @@
 
 | 名称                                                                                 | 关键词                    | 说明                                                     |
 | ------------------------------------------------------------------------------------ | ------------------------- | -------------------------------------------------------- |
-| [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)       | 解决和 prettier 的冲突    | 需要将 prettier 放在 extends 的最后一位                  |
-| [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)           | import                    | 如 import 的顺序                                         |
-| [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)             | react                     | 需要使用 plugin:react/jsx-runtime 兼容 jsx 的新语法      |
-| [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) | react-hooks               | Hook 的使用和声明                                        |
+| [eslint-config-prettier](https://www.npmjs.com/package/eslint-config-prettier)       | 解决和 `Prettier` 的冲突  | 需要放在 extends 的最后一位                              |
+| [eslint-plugin-import](https://www.npmjs.com/package/eslint-plugin-import)           | import                    | 如 import 的序                                           |
+| [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)             | React                     | 需要使用 `plugin:react/jsx-runtime` 兼容 jsx 的新语法    |
+| [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) | Hooks                     | Hook 的使用和声明                                        |
 | [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)       | Jsx 无障碍                | 如 button 必须写 ‘type’ ， img 必须写 ‘alt’              |
-| [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)               | jest                      | 测试文件格式                                             |
-| [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)         | powerful ESLint rules     | " 严格 "，如文件命名， Array.find/some/include... 的使用 |
-| [eslint-formatter-pretty](https://www.npmjs.com/package/eslint-formatter-pretty)     | 提供一个 formatter 的命令 | 给 eslint 命令提供 --format=pretty 配置                  |
+| [eslint-plugin-jest](https://www.npmjs.com/package/eslint-plugin-jest)               | Jest                      | 测试文件格式                                             |
+| [eslint-plugin-unicorn](https://www.npmjs.com/package/eslint-plugin-unicorn)         | Powerful ESLint rules     | 更为严格，如文件命名， Array.find/some/include... 的使用 |
+| [eslint-formatter-pretty](https://www.npmjs.com/package/eslint-formatter-pretty)     | 提供一个 formatter 的命令 | 给 eslint 命令提供 `--format=pretty` 配置                |
 
 ## 常见配置
 
-| 名称                                                                                             | 关键词     | plugin                                                                                             | extend                    | 说明                                                                                                           |
-| ------------------------------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------------------------- | ------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| [eslint-config-airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)             | JavaScript | eslint-plugin-import                                                                               | ---                       | 基础的 eslint 规则                                                                                             |
-| [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)                       | React      | eslint-plugin-react， eslint-plugin-jsx-a11y， eslint-plugin-react-hooks                           | eslint-config-airbnb-base | 在 base 的基础上新增 react 相关配置，虽然内置了 hook 的 plugin 但是并没有使用，需要自己单独声明 'airbnb/hooks' |
-| [eslint-config-airbnb-typescript](https://www.npmjs.com/package/eslint-config-airbnb-typescript) | Typescript | [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) | eslint-config-airbnb-base | 内部已配合 @typescript-eslint/parser 使用                                                                      |
+| 名称                                                                                             | 关键词     | plugin                                                                                             | extend                    | 说明                                                                                                             |
+| ------------------------------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------------------------- | ------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [eslint-config-airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base)             | JavaScript | eslint-plugin-import                                                                               | ---                       | 基础的 `Eslint` 规则                                                                                             |
+| [eslint-config-airbnb](https://www.npmjs.com/package/eslint-config-airbnb)                       | React      | eslint-plugin-react， eslint-plugin-jsx-a11y， eslint-plugin-react-hooks                           | eslint-config-airbnb-base | 在 base 的基础上新增 `React` 相关配置，虽然内置了 Hook 的 plugin 但是并没有使用，需要自己单独声明 `airbnb/hooks` |
+| [eslint-config-airbnb-typescript](https://www.npmjs.com/package/eslint-config-airbnb-typescript) | Typescript | [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin) | eslint-config-airbnb-base | 内部已配合 `@typescript-eslint/parser` 使用                                                                      |
 
 ## 参考配置
 

@@ -1,7 +1,7 @@
 ---
 pageClass: custom-page-class
 ---
-# Learn regex the easy way
+# 用简单的方法学正则表达式
 
 标签：`正则表达式`
 

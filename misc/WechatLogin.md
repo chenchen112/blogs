@@ -1,4 +1,4 @@
-# 微信登陆的实现
+# 微信登陆
 
 标签：`微信登陆`
 
@@ -6,29 +6,36 @@
 
 > OAuth 2.0 is the industry-standard protocol for authorization. OAuth 2.0 focuses on client developer simplicity while providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices. 
 
-场景：快递员问题
-1. 我住在一个大型的居民小区。
-2. 小区有门禁系统。
-3. 我经常寄快递，经常都有快递员来取货。我必须找到一个办法，让快递员通过门禁系统，进入小区。
-4. 如果我把自己的密码，告诉快递员，他就拥有了与我同样的权限，这样好像不太合适。万一我想取消他进入小区的权力，也很麻烦，我自己的密码也得跟着改了，还得通知其他的快递员。
+场景：快递员问题，条件如下
+
+- 我住在一个大型的居民小区。
+- 小区有门禁系统。
+- 我经常寄快递，经常都有快递员来取货。我必须找到一个办法，让快递员通过门禁系统，进入小区。
+- 如果我把自己的密码，告诉快递员，他就拥有了与我同样的权限，这样好像不太合适。万一我想取消他进入小区的权力，也很麻烦，我自己的密码也得跟着改了，还得通知其他的快递员。
 
 于是，我设计了一套授权机制。
-第一步，门禁系统的密码输入器下面，增加一个按钮，叫做 " 获取授权 "。快递员需要首先按这个按钮，去申请授权。
-第二步，他按下按钮以后，我的手机就会跳出对话框：有人正在要求授权。系统还会显示该快递员的姓名、工号和所属的快递公司。我确认请求属实，就点击按钮，告诉门禁系统，我同意给予他进入小区的授权。
-第三步，门禁系统得到我的确认以后，向快递员显示一个进入小区的令牌。令牌就是类似密码的一串数字，只在七天内有效。
-第四步，快递员向门禁系统输入令牌，进入小区。
 
-## 微信登录准备工作
+1. 门禁系统的密码输入器下面，增加一个按钮，叫做 **获取授权**。快递员需要首先按这个按钮，去申请授权。
+2. 他按下按钮以后，我的手机就会跳出对话框：有人正在要求授权。系统还会显示该快递员的姓名、工号和所属的快递公司。我确认请求属实，就点击按钮，告诉门禁系统，我同意给予他进入小区的授权。
+3. 门禁系统得到我的确认以后，向快递员显示一个进入小区的令牌。令牌就是类似密码的一串数字，只在七天内有效。
+4. 快递员向门禁系统输入令牌，进入小区。
 
-[ 微信开放平台 ](https://open.weixin.qq.com/cgi-bin/frame?t=home/web_tmpl&lang=zh_CN) 注册并且创建应用，申请接入，成功后会获得 AppID 和 AppSecret
+## 准备工作
+
+[ 微信开放平台 ](https://open.weixin.qq.com/cgi-bin/frame?t=home/web_tmpl&lang=zh_CN) 注册并且创建应用，申请接入，成功后会获得 `AppID` 和 `AppSecret`
 <div style="text-align:center"><img src="@/WXLogin.png"/></div>
 
 ## 请求过程
 <div style="text-align:center"><img src="@/WXLoginFlow.png"/></div>
 
 #### 获取登录二维码
-在页面中先引入如下 JS 文件（支持 https，可考虑使用 ahooks 的 useExternal） 
+
+在页面中先引入如下 JS 文件（支持 https，可考虑使用 ahooks 的 `useExternal`）
 > http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js
+
+该脚本主要做两件事：
+- 请求二维码
+- 发起长轮询
 
 ``` typescript
 const obj = new WxLogin(wxLoginParam)  // new Window.WxLogin()
@@ -46,9 +53,14 @@ export interface WxLoginParam {
 
 ```
 
+
+
 #### 请求 code
 
-code（授权临时票据）用于获取 access_token，一个 code 只能成功换取一次 access_token 即失效
+手机端扫描二维码后发生重定向至 `redirect_uri`，并且带上 `code` 和 `state` 参数
+
+`code`（授权临时票据）用于获取 `access_token`，一个 code 只能成功换取一次 `access_token` 即失效
+
 ``` typescript
 request({
    type: 'GET' 
@@ -63,10 +75,10 @@ type CodeParam = Pick<WxLoginParam, 'appid' | 'redirect_uri' | 'scope' | 'state'
 
 ```
 
-用户允许授权后，将会重定向到 redirect_uri 的网址上，并且带上 code 和 state 参数
+#### 换取 access_token
 
+使用 `code` 换取 `access_token`， 它可用于访问一些用户信息查询相关的接口
 
-#### 通过 code 换取 access_token
 ``` typescript
 
 request({
@@ -99,7 +111,9 @@ const AccessTokenError = { errcode: 40029, errmsg: 'invalid code' };
 
 ```
 
-#### 通过 access_token 获取用户基本信息
+#### 获取用户基本信息
+
+使用 `access_token` 查询用户信息
 
 ``` typescript
 request({
@@ -134,9 +148,11 @@ export interface UserInfo {
 
 ```
 
-#### 刷新或续期 access_token 使用
+#### 续期 access_token
    
-由于 access_token 有效期较短，当 access_token 超时后，可以使用 refresh_token 30 天进行刷新，如果已超时会得到一个新的，未超时则续期
+出于安全性考虑， `access_token` 有效期较短
+
+当 `access_token` 超时后，可以使用 `refresh_token` 进行刷新，如果已超时会得到一个新的，未超时则续期
 
 ``` typescript
 request({
@@ -156,7 +172,7 @@ type RefreshTokenResponse = Omit<AccessTokenResponse, 'unionid'>;
 const RefreshTokenError = { errcode: 40030, errmsg: 'invalid refresh_token' };
 ```
 
-## 组件
+## 组件封装
 
 ``` typescript
 
@@ -231,15 +247,13 @@ export default function WechatQRCode({
 
 ## Tips
 
-1. AppSecret， accessToken， refreshToken 是应用接口使用密钥，泄漏后将可能导致应用数据泄漏、应用的用户数据泄漏等高风险后果；存储在客户端，极有可能被恶意窃取；
-建议将 AppSecret、 accessToken 放在服务器
-2. WxLoginParam.state 可用于防止 csrf 攻击，建议第三方带上该参数，可设置为简单的随机数加 session 进行校验
-3. WxLoginParam.href（自定义二维码样式） ，如果是链接必须是 https ，除了放链接还可以将写好的样式文件进行 base64 转码
-4. 授权作用域（ scope）代表用户授权给第三方的接口权限，网页应用目前仅填写 'snsapi_login'
-5. code 的超时时间为 10 分钟， access_token 有效期为 2 个小时， refresh_token 有效期 30 天
-6. 本地调试会有跨域的问题，会比较麻烦
+1. `AppSecret`，`access_token`， `refresh_token` 是应用接口使用密钥，泄漏后将可能导致应用数据泄漏、应用的用户数据泄漏等高风险后果，存储在客户端，极有可能被恶意窃取
+2. `state` 可用于防止 `csrf` 攻击，建议第三方带上该参数，可设置为简单的随机数加 session 进行校验
+3. `scope`（授权作用域） 代表用户授权给第三方的接口权限，网页应用目前仅填写 `snsapi_login`
+4. `code` 的超时时间为 10 分钟， `access_token` 有效期为 2 个小时， `refresh_token` 有效期 30 天
+5. 本地调试会有跨域的问题，会比较麻烦
 
 
 ## 参考
-1. [ 微信官方开发文档 ](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)
-2. [OAuth2.0](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
+- [ 微信官方开发文档 ](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)
+- [OAuth2.0](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
