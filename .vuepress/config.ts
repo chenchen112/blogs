@@ -53,6 +53,11 @@ export default defineConfig({
               "/translation/LearnRegexTheEasyWay",
             ],
           },
+          {
+            title: " 读书笔记 ",
+            collapsable: false,
+            children: ["/reading/SoftSkills"],
+          },
         ],
       },
     ],
