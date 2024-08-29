@@ -2,24 +2,14 @@ import { defineConfig } from "vuepress/config";
 
 export default defineConfig({
   base: "/blogs/",
-  title: " 个人博客 ",
-  description: "blogs",
+  title: "blogs",
+  description: "frontend blogs",
   head: [["link", { rel: "icon", href: "/favicon.ico" }]],
   plugins: [
     ["@vuepress/plugin-medium-zoom"],
     ["@vuepress/plugin-back-to-top"],
     ["@vuepress/last-updated"],
   ],
-  configureWebpack: {
-    resolve: {
-      alias: {
-        "@": "/img",
-      },
-    },
-  },
-  markdown: {
-    lineNumbers: false, // 显示代码块的行数
-  },
   themeConfig: {
     editLinks: true,
     nav: [{ text: "Github", link: "https://github.com/chenchen112/blogs" }],
@@ -34,29 +24,40 @@ export default defineConfig({
     sidebar: [
       {
         title: "2024",
-        collapsable: false,
         children: [
-          "/misc/WechatLogin",
-          "/misc/ClassName",
-          "/misc/Particles",
-          "/misc/JsQuestions",
+          "/2024/misc/WechatLogin",
+          "/2024/misc/ClassName",
+          "/2024/misc/Particles",
+          "/2024/misc/JsQuestions",
           {
             title: "Lint 配置参考 ",
             collapsable: false,
-            children: ["/lint/Eslint", "/lint/Prettier", "/lint/StyleLint"],
+            children: [
+              "/2024/lint/Eslint",
+              "/2024/lint/Prettier",
+              "/2024/lint/StyleLint",
+            ],
           },
           {
             title: " 翻译 ",
             collapsable: false,
             children: [
-              "/translation/SweepAndPrune",
-              "/translation/LearnRegexTheEasyWay",
+              "/2024/translation/SweepAndPrune",
+              "/2024/translation/LearnRegexTheEasyWay",
             ],
           },
           {
             title: " 读书笔记 ",
             collapsable: false,
-            children: ["/reading/SoftSkills"],
+            children: [
+              {
+                title: " 软技能：代码之外的生存指南 ",
+                children: [
+                  "/2024/reading/SoftSkills/Career",
+                  "/2024/reading/SoftSkills/SelfMarketing",
+                ],
+              },
+            ],
           },
         ],
       },
