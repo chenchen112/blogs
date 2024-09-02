@@ -62,6 +62,7 @@ export default defineConfig({
                 children: [
                   "/2024/reading/SoftSkills/Career",
                   "/2024/reading/SoftSkills/SelfMarketing",
+                  "/2024/reading/SoftSkills/Learning",
                 ],
               },
             ],
