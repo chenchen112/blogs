@@ -2,6 +2,8 @@
 
 标签：`算法` `游戏`
 
+[[toc]]
+
 当我想要快速的实现游戏的碰撞检测时，`Sweep-and-prune` 是我的首选算法，我觉得他是一个很精彩和优雅的算法，所以写下了这篇文章。
 
 这篇文章会有点长，并且夹杂了众多的案例和说明，可以分为两个版本，本文属于简化版本
@@ -54,7 +56,7 @@ for (let i = 0; i < balls.length; i++) {
 
 那我们应该怎么改进这个方案呢
 
-#### 说明
+### 说明
 
 任何碰撞检测算法在最坏的情况下的时间复杂度都会是 O(n ^ 2)，即当所有对象都同时相交时，你别无它法，只能去处理 n ^ 2 里的每一次碰撞
 
@@ -135,7 +137,7 @@ intersects(B, C) // B.right > C.left evals to false.
 
 这样根据某些特定的逻辑去标记对象本质上就是排序，那么如果我们每次都进行排序，这样排序的代价会不会牺牲掉上跳过测试而带来的收益呢
 
-#### 排序
+### 排序
 
 排序可以使我们能够充分利用不平等式的传递性，并且快速排序的时间复杂度在 O(n*log n)，低于 O(n ^ 2)
 
@@ -154,6 +156,75 @@ intersects(B, C) // B.right > C.left evals to false.
     // check each of the other balls
     for (let j = i + 1; j < balls.length; j++) {
       const ball2 = balls[j];
+
++ 
++     // stop when too far away
++     if (ball2.left > ball1.right) break;
++ 
+
+      // check for collision
+      if (intersects(ball1, ball2)) {
+        bounce(ball1, ball2);
+      }
+    }
+  }
+```
+
+它与简单的解决方案基本相同，只是多了两行代码
+
+第一行 sortByLeft(balls) 根据左边缘 x 坐标进行排序
+
+```javascript
+function sortByLeft(balls) {
+  balls.sort((a,b) => a.left - b.left);
+}
+```
+
+第二行是在内循环中，增加了一个中断
+
+```javascript
+if (ball2.left > ball1.right) break;
+```
+
+总之，当当前 balls[ j ] 停止与当前 ball1 重叠时，迭代 balls[ j + c ] 中的任何其他 ball2 也将保证不会与 ball1 重叠。
+
+现在我么再来分析一下时间复杂度
+
+排序 - 如果我们采用“最快”的排序算法，例如归并排序或快速排序 - 将添加一个 O(n log n) 项
+
+两级循环现在有一个提前中断，平均为 O(n + m)，其中 m 是 x 重叠的总数。
+
+这可能会退化为 O(n ^ 2) 但如上所述，查看平均和最佳情况更有用。最好的情况是，循环的时间复杂度为 O(n) ，在没有重叠的情况下不会浪费多余的处理。平均来说是 O(n + m) 
+
+
+```javascript
+// O(n log n)
+sortByLeft(balls);
+
+// O(n + m)
+for (let i = 0; i < balls.length; i++) {
+  const ball1 = balls[i];
+  // O(1) at best; O(m/n) on average; O(n) at worst
+  for (let j = i + 1; j < balls.length; j++) {
+    const ball2 = balls[j];
+    if (ball2.left > ball1.right) break;
+    if (intersects(ball1, ball2)) {
+      bounce(ball1, ball2);
+    }
+  }
+}
+```
+
+将它们加在一起我们得到 O(n*log n + m)，这对于 O(n ^ 2) 是一个不小的改进
+
+![complexity](../img/complexity.png)
+
+此外，还可以改进排序算法的选择，我们将在复杂版本中进一步说明
+
+## 原文链接
+[ 碰撞检测算法 - 简化版本 ](https://leanrada.com/notes/sweep-and-prune/)
+
+[ 碰撞检测算法 - 复杂版本 ](https://leanrada.com/notes/sweep-and-prune-2/)nst ball2 = balls[j];
 
 + 
 +     // stop when too far away

@@ -1,6 +1,6 @@
 # 压缩 ClassName
 
-标签：`Webpack` `ClassName`
+标签：`Webpack4` `ClassName`
 
 ## 背景
 

@@ -10,6 +10,7 @@ export default defineConfig({
     ["@vuepress/plugin-back-to-top"],
     ["@vuepress/last-updated"],
   ],
+  markdown: { toc: { includeLevel: [2, 3, 4] } },
   themeConfig: {
     editLinks: true,
     nav: [{ text: "Github", link: "https://github.com/chenchen112/blogs" }],
@@ -21,6 +22,7 @@ export default defineConfig({
     docsBranch: "main",
     editLinkText: " 编辑 ",
     smoothScroll: true,
+
     sidebar: [
       {
         title: "2024",
@@ -29,6 +31,11 @@ export default defineConfig({
           "/2024/misc/ClassName",
           "/2024/misc/Particles",
           "/2024/misc/JsQuestions",
+          {
+            title: "Vue",
+            collapsable: false,
+            children: ["/2024/vue/Introduction", "/2024/vue/Essentials"],
+          },
           {
             title: "Lint 配置参考 ",
             collapsable: false,
@@ -59,6 +66,7 @@ export default defineConfig({
               },
             ],
           },
+          "/2024/todo",
         ],
       },
     ],

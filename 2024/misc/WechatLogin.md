@@ -28,7 +28,7 @@
 ## 请求过程
 <div style="text-align:center"><img src="../img/WXLoginFlow.png"/></div>
 
-#### 获取登录二维码
+### 获取登录二维码
 
 在页面中先引入如下 JS 文件（支持 https，可考虑使用 ahooks 的 `useExternal`）
 > http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js
@@ -55,7 +55,7 @@ export interface WxLoginParam {
 
 
 
-#### 请求 code
+### 请求 code
 
 手机端扫描二维码后发生重定向至 `redirect_uri`，并且带上 `code` 和 `state` 参数
 
@@ -75,7 +75,7 @@ type CodeParam = Pick<WxLoginParam, 'appid' | 'redirect_uri' | 'scope' | 'state'
 
 ```
 
-#### 换取 access_token
+### 换取 access_token
 
 使用 `code` 换取 `access_token`， 它可用于访问一些用户信息查询相关的接口
 
@@ -111,7 +111,7 @@ const AccessTokenError = { errcode: 40029, errmsg: 'invalid code' };
 
 ```
 
-#### 获取用户基本信息
+### 获取用户基本信息
 
 使用 `access_token` 查询用户信息
 
@@ -148,7 +148,7 @@ export interface UserInfo {
 
 ```
 
-#### 续期 access_token
+### 续期 access_token
    
 出于安全性考虑， `access_token` 有效期较短
 
@@ -156,6 +156,108 @@ export interface UserInfo {
 
 ``` typescript
 request({
+   type: 'GET' 
+   url: 'https://api.weixin.qq.com/sns/oauth2/refresh_token' // 5w/min
+   param: RefreshTokenParam
+})
+
+interface RefreshTokenParam {
+  appid: string;
+  grant_type: 'refresh_token';
+  refresh_token: string;
+}
+
+type RefreshTokenResponse = Omit<AccessTokenResponse, 'unionid'>;
+
+const RefreshTokenError = { errcode: 40030, errmsg: 'invalid refresh_token' };
+```
+
+## 组件封装
+
+``` typescript
+
+const WechatQRCodeContainerId = 'WECHAT_QR_CODE_CONTAINER';
+
+const WxExternalURL = '//res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js';
+
+const BaseWxLoginConfig = {
+  lang: 'cn',
+  style: 'black',
+  response_type: 'code',
+  scope: 'snsapi_login',
+  self_redirect: true,
+  id: WechatQRCodeContainerId,
+  state: Math.round(Math.random() * 10000),
+};
+
+interface WechatQRCodeProps {
+  appId: string;
+  onSuccess: (code: string) => void;
+  host: string;
+  width?: number;
+  height?: number;
+  redirectPath?: string;
+}
+export default function WechatQRCode({
+  onSuccess,
+  appId,
+  host,
+  width = 300,
+  height = 400,
+  redirectPath = '/redirect',
+}: WechatQRCodeProps) {
+  const status = useExternal(WxExternalURL, { js: { async: true } });
+
+  const handleSuccess = usePersistFn(onSuccess);
+
+  useEffect(() => {
+    if (status === 'ready' && host && appId) {
+      // @ts-ignore
+      // eslint-disable-next-line no-new
+      new WxLogin({
+        ...BaseWxLoginConfig,
+        appid: appId,
+        href: DefaultStyle,
+        redirect_uri: encodeURIComponent(`${document.location.protocol}//${host}${redirectPath}`),
+      });
+      const container = document.getElementById(WechatQRCodeContainerId);
+      const iframe = container?.children[0] as HTMLIFrameElement;
+      iframe.width = String(width);
+      iframe.height = String(height);
+      iframe.onload = () => {
+        // 本地会出现跨域问题
+        const doc = iframe.contentDocument;
+        if (!doc) {
+          return;
+        }
+        const param = new URLSearchParams(doc.location.search);
+        const code = param.get('code');
+        if (code) { 
+          handleSuccess(code);
+        }
+      };
+    }
+  }, [appId, handleSuccess, height, host, redirectPath, status, width]);
+
+  return <div className={styles.qrCode} id={WechatQRCodeContainerId} />;
+}
+
+
+```
+
+## Tips
+
+1. `AppSecret`，`access_token`， `refresh_token` 是应用接口使用密钥，泄漏后将可能导致应用数据泄漏、应用的用户数据泄漏等高风险后果，存储在客户端，极有可能被恶意窃取
+2. `state` 可用于防止 `csrf` 攻击，建议第三方带上该参数，可设置为简单的随机数加 session 进行校验
+3. `scope`（授权作用域） 代表用户授权给第三方的接口权限，网页应用目前仅填写 `snsapi_login`
+4. `code` 的超时时间为 10 分钟， `access_token` 有效期为 2 个小时， `refresh_token` 有效期 30 天
+5. 本地调试会有跨域的问题，会比较麻烦
+
+
+## 参考
+- [ 微信官方开发文档 ](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)
+- [OAuth2.0](https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html)
+{
    type: 'GET' 
    url: 'https://api.weixin.qq.com/sns/oauth2/refresh_token' // 5w/min
    param: RefreshTokenParam
