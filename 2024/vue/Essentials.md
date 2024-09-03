@@ -100,7 +100,7 @@ console.log(count.value) // 1
 
 推荐使用单文件组件和组合式 API 来声明响应式状态和方法
 
-```html {1}
+```html {1,9}
 <script setup>
 import { ref } from 'vue'
 
@@ -218,4 +218,48 @@ Vue 会在运行时检查兼容性并自动补充样式前缀
 <div :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
 ```
 
-在不需要前缀的浏览器中会选择 'flex'
+在不需要前缀的浏览器中会选择 `flex`
+
+## 条件渲染
+
+两种条件渲染的方式 `v-if` `v-show`
+
+```html
+<div v-if="type === 'A'">
+  A
+</div>
+<div v-else-if="type === 'B'">
+  B
+</div>
+<div v-else-if="type === 'C'">
+  C
+</div>
+<div v-else>
+  Not A/B/C
+</div>
+
+<h1 v-show="ok">Hello!</h1>
+```
+
+区别是 `v-if` 不会保留 dom 元素，而 `v-show` 只是设置了样式 `display:'none'`
+
+`v-if` 可以在 `template` 上使用，而 `v-show` 不可以
+
+## 列表元素
+
+使用 `v-for` 来渲染列表元素
+
+```html
+<li v-for="(item, index) in items">
+  {{ item.message }}
+</li>
+
+// 使用 of 关键词，并进行解构
+<div v-for="({ value }, index) of items"></div>
+
+// 遍历对象
+<li v-for="(value, key, index) in myObject">
+  {{ index }}. {{ key }}: {{ value }}
+</li>
+```
+

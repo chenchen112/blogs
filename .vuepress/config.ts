@@ -27,9 +27,9 @@ export default defineConfig({
       {
         title: "2024",
         children: [
-          "/2024/misc/WechatLogin",
+          "/2024/misc/Wechat",
           "/2024/misc/ClassName",
-          "/2024/misc/Particles",
+          "/2024/misc/Particle",
           "/2024/misc/JsQuestions",
           {
             title: "Vue",
