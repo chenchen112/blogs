@@ -1,4 +1,4 @@
-# 基础篇
+# 基础篇（一）
 
 [[toc]]
 
@@ -39,13 +39,13 @@ app.config.errorHandler = (err) => {
 ```html
 <div v-bind:id="dynamicId"></div>
 
-// 简写
+<!-- 简写 -->
 <div :id="dynamicId"></div>
 
-// 同名简写 (3.4+)
+<!-- 同名简写 (3.4+) -->
 <div :id></div>
 
-// 动态绑定
+<!-- 动态绑定 -->
 <a :[attributeName]="url"> ... </a>
 ```
 
@@ -167,7 +167,6 @@ const author = reactive({
 })
 
 // 一个计算属性 ref
-
 const publishedBooksMessage = computed(() => {
   return author.books.length > 0 ? 'Yes' : 'No'
 })
@@ -254,12 +253,49 @@ Vue 会在运行时检查兼容性并自动补充样式前缀
   {{ item.message }}
 </li>
 
-// 使用 of 关键词，并进行解构
+<!-- 使用 of 关键词，并进行解构 -->
 <div v-for="({ value }, index) of items"></div>
 
-// 遍历对象
+<!-- 遍历对象 -->
 <li v-for="(value, key, index) in myObject">
   {{ index }}. {{ key }}: {{ value }}
 </li>
+
+<!-- 直接使用范围值， n 从 1 开始而非 0 -->
+<span v-for="n in 10">{{ n }}</span>
 ```
 
+同 React 一样，可以使用 `key` 优化 diff 算法
+
+### `v-for` 和 `v-if`
+
+当它们同时存在于一个节点上时，`v-if` 比 `v-for` 的优先级更高。
+
+这意味着 `v-if` 的条件将无法访问到 `v-for` 作用域内定义的变量别名：
+
+```html
+<!--
+ 这会抛出一个错误，因为属性 todo 此时
+ 没有在该实例上定义
+-->
+<li v-for="todo in todos" v-if="!todo.isComplete">
+  {{ todo.name }}
+</li>
+
+<!-- 正确的做法 -->
+<template v-for="todo in todos">
+  <li v-if="!todo.isComplete">
+    {{ todo.name }}
+  </li>
+</template>
+```
+
+### 数组变化侦测
+
+Vue 能够监听到数组的变异方法触发相关更新：
+
+- push， pop
+- shift， unshift
+- splice
+- sort
+- reverse

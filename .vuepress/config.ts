@@ -34,7 +34,12 @@ export default defineConfig({
           {
             title: "Vue",
             collapsable: false,
-            children: ["/2024/vue/Introduction", "/2024/vue/Essentials"],
+            children: [
+              "/2024/vue/Introduction",
+              "/2024/vue/Essentials1",
+              "/2024/vue/Essentials2",
+              "/2024/vue/Essentials3",
+            ],
           },
           {
             title: "Lint 配置参考 ",
