@@ -39,6 +39,7 @@ export default defineConfig({
               "/2024/vue/Essentials1",
               "/2024/vue/Essentials2",
               "/2024/vue/Essentials3",
+              "/2024/vue/Component1",
             ],
           },
           {

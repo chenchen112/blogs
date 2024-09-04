@@ -83,3 +83,127 @@ defineExpose({
 })
 </script>
 ```
+
+## 组件基础
+
+一般会将 Vue 组件定义为一个 `.vue` 文件中，称之为单文件组件 —— SFC
+
+```html
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">You clicked me {{ count }} times.</button>
+</template>
+```
+也可以通过导出 js 对象的方式定义组件
+
+```javascript
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const count = ref(0)
+    return { count }
+  },
+  template: `
+    <button @click="count++">
+      You clicked me {{ count }} times.
+    </button>`
+  // 也可以针对一个 DOM 内联模板：
+  // template: '#my-template-element'
+}
+```
+
+### 传递 props
+
+子组件中使用 `defineProps` 声明接受的 props
+
+```html{3}
+<!-- BlogPost.vue -->
+<script setup>
+const props = defineProps(['title'])
+</script>
+
+<template>
+  <h4>{{ title }}</h4>
+</template>
+
+<!-- 父组件传值 -->
+<BlogPost
+  v-for="post in posts"
+  :key="post.id"
+  :title="post.title"
+ />
+```
+
+### 监听事件
+
+子组件通过 `defineEmits` 声明会抛出的事件
+
+```html{3}
+<!-- BlogPost.vue -->
+<script setup>
+const emit = defineEmits(['enlarge-text'])
+// emit 等同于模板中的 $emit
+</script>
+
+<template>
+  <div class="blog-post">
+    <h4>{{ title }}</h4>
+    <button @click="$emit('enlarge-text')">Enlarge text</button>
+  </div>
+</template>
+
+<!-- 父组件接收事件 -->
+<BlogPost
+  ...
+  @enlarge-text="handler"
+ />
+```
+
+### 插槽
+
+子组件使用 `slot` 接收父组件传递的内容
+
+```html{9}
+<AlertBox>
+  Something bad happened.
+</AlertBox>
+
+<!-- AlertBox.vue -->
+<template>
+  <div class="alert-box">
+    <strong>This is an Error for Demo Purposes</strong>
+    <slot />
+  </div>
+</template>
+
+```
+
+### 动态组件
+
+通过 `<component>` 元素配合 `is` attribute 实现动态组件
+
+```html
+<!-- currentTab 改变时组件也改变 -->
+<component :is="tabs[currentTab]"></component>
+```
+
+`:is` 可以是以下几种
+- 被注册的组件名
+- 导入的组件对象
+- 原生 HTML 元素
+
+被切换掉的组件将会被卸载，但可以通过 `<KeepAlive>` 强制保持存活
+
+### DOM 内模板解析
+
+注意事项如下：
+
+- 大小写区分
+- 闭合标签
+- 元素位置限制
