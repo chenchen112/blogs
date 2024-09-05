@@ -44,7 +44,7 @@ const post = {
 
 ### 基于类型的 prop/emit 声明
 
-```javascript
+```js
 const props = defineProps<{
   foo: string
   bar?: number
@@ -60,4 +60,186 @@ const emit = defineEmits<{
   change: [id: number] // 具名元组语法
   update: [value: string]
 }>()
+```
+
+## 组件 v-model(3.4+)
+
+`v-model` 配合 `defineModel` 可以在组件上实现双向绑定
+
+```html
+<!-- Parent.vue -->
+<Child v-model="countModel" />
+<!-- 也可以传递一个参数 -->
+<!-- <Children v-model:title="bookTitle" /> -->
+
+<!-- Children.vue -->
+<script setup>
+const model = defineModel()
+// 接收参数
+// const title = defineModel('title')
+</script>
+
+<template>
+  <input v-model="model" />
+</template>
+```
+
+### 带修饰符的的 `v-model`
+
+自定义修饰符
+
+```html{8}
+<!-- Parent.vue -->
+<MyComponent v-model.capitalize="myText" />
+
+<!-- Children.vue -->
+<script setup>
+const [model, modifiers] = defineModel({
+  set(value) {
+    if (modifiers.capitalize) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+    return value
+  }
+  // get(){}
+})
+</script>
+
+<template>
+  <input type="text" v-model="model" />
+</template>
+```
+
+## 透传 Attributes
+
+组件接收到的 attribute 如果没有被声明为 `props` 或 `emits`，如果组件时以单元素为根做渲染，
+
+这些没有被 **消费** 的 attribute 将会被自动添加到根元素上
+
+如果其根节点为另一组件，这些 attribute 会继续向下传递
+
+可以通过 `defineOptions` 禁用自动继承 attribute
+
+```js{3}
+<script setup>
+defineOptions({
+  inheritAttrs: false
+})
+</script>
+```
+
+这些透传过来的 attribute 可以通过 `$attrs` 访问到
+
+```html{2}
+<div class="btn-wrapper">
+  <button class="btn" v-bind="$attrs">Click Me</button>
+</div>
+```
+
+如果组件是多个根节点，需要通过以上方式显示绑定 attribute ，否则将抛出警告
+
+同时也可使用 `useAttrs()` 访问所有透传 attribute，但是这里访问到的对象并不是响应式的，无法通过侦听器监听
+
+## 插槽
+
+可以通过 `<slot>` 元素提供一个插槽出口，标识了父元素提供的插槽内容渲染位置
+
+![ 插槽 ](../img/slot.png)
+
+### 默认内容
+
+```html{3}
+<button type="submit">
+  <slot>
+    Submit <!-- 默认内容 -->
+  </slot>
+</button>
+```
+
+### 具名插槽
+
+利用 `slot` 的 `name` 属性配合 `v-slot` 建立多个插槽间的对应关系
+
+`v-slot` 可以简写为 `#`
+
+```html
+<!-- BaseLayout.vue -->
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <!-- default 插槽 -->
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+</div>
+
+<!-- Container -->
+<BaseLayout>
+  <template v-slot:header>
+    <!-- header 插槽的内容放这里 -->
+  </template>
+</BaseLayout>
+```
+
+### 条件插槽
+
+可通过 `$slot` 配合 `v-if` 实现条件插槽
+
+```html
+<template>
+  <div class="card">
+    <div v-if="$slots.header" class="card-header">
+      <slot name="header" />
+    </div>
+  </div>
+</template>
+```
+
+### 动态插槽
+
+```html
+<base-layout>
+  <template #[dynamicSlotName]>
+    ...
+  </template>
+</base-layout>
+```
+
+### 作用域插槽
+
+子组件可将自身状态传递给插槽，供父组件渲染使用
+
+通过 `v-slot` 接收插槽 props（除去 `name`）
+
+```html{6}
+<!-- <MyComponent> 的模板 -->
+<div>
+  <slot :text="greetingMessage" :count="1"></slot>
+</div>
+
+<MyComponent v-slot="slotProps">
+  {{ slotProps.text }} {{ slotProps.count }}
+</MyComponent>
+
+<!-- 具名作用域插槽 -->
+<MyComponent>
+  <template #header="headerProps">
+    {{ headerProps }}
+  </template>
+</MyComponent>
+
+```
+
+### 无渲染组件
+
+一些组件可能只包括了逻辑而不需要自己渲染内容，视图输出通过作用域插槽全权交给了消费者组件
+
+```html
+<MouseTracker v-slot="{ x, y }">
+  Mouse is at: {{ x }}, {{ y }}
+</MouseTracker>
 ```
