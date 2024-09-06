@@ -1,4 +1,4 @@
-# 深入组件（一）
+# 深入组件
 
 [[toc]]
 
@@ -243,3 +243,78 @@ defineOptions({
   Mouse is at: {{ x }}, {{ y }}
 </MouseTracker>
 ```
+
+## 依赖注入
+
+为了解决 **prop 逐级透传** 的问题，可以通过 `provide` 和 `inject` 来构造上下文
+
+```html
+<!-- Provider -->
+<script setup>
+import { provide } from 'vue'
+
+provide(/* 注入名 */ 'message', /* 值 */ 'hello!')
+</script>
+
+<!-- Consumer -->
+<script setup>
+import { inject } from 'vue'
+
+const message = inject('message',' 默认值 ')
+// 也可以通过工厂函数构造默认值，第三个参数表示默认值应被当作一个工厂函数
+// const value = inject('key', () => new ExpensiveClass(), true)
+</script>
+```
+
+### 配合响应式
+
+```html
+<!-- 在供给方组件内 -->
+<script setup>
+import { provide, ref } from 'vue'
+
+const location = ref('North Pole')
+
+function updateLocation() {
+  location.value = 'South Pole'
+}
+
+provide('location', {
+  location,
+  updateLocation
+})
+</script>
+
+
+<!-- 在注入方组件 -->
+<script setup>
+import { inject } from 'vue'
+
+const { location, updateLocation } = inject('location')
+// provide('read-only-count', readonly(count)) 可以使用 readonly 限制数据仅读
+</script>
+
+<template>
+  <button @click="updateLocation">{{ location }}</button>
+</template>
+```
+
+## 异步组件
+
+使用 `defineAsyncComponent` 定义异步组件，实现按需加载
+
+```html
+<script setup>
+import { defineAsyncComponent } from 'vue'
+
+const AdminPage = defineAsyncComponent(() =>
+  import('./components/AdminPageComponent.vue')
+)
+</script>
+
+<template>
+  <AdminPage />
+</template>
+```
+
+配合 `Suspense` 渲染加载状态

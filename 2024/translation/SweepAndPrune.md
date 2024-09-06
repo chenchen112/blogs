@@ -2,6 +2,8 @@
 
 标签：`算法` `游戏`
 
+原文链接：[ 碰撞检测算法 ](https://leanrada.com/notes/sweep-and-prune/)
+
 [[toc]]
 
 当我想要快速的实现游戏的碰撞检测时，`Sweep-and-prune` 是我的首选算法，我觉得他是一个很精彩和优雅的算法，所以写下了这篇文章。
@@ -289,8 +291,3 @@ for (let i = 0; i < balls.length; i++) {
 ![complexity](../img/complexity.png)
 
 此外，还可以改进排序算法的选择，我们将在复杂版本中进一步说明
-
-## 原文链接
-[ 碰撞检测算法 - 简化版本 ](https://leanrada.com/notes/sweep-and-prune/)
-
-[ 碰撞检测算法 - 复杂版本 ](https://leanrada.com/notes/sweep-and-prune-2/)

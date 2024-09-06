@@ -1,10 +1,28 @@
 import { defineConfig } from "vuepress/config";
 
+const keywordsContent = " 博客 frontend vuepress";
+
 export default defineConfig({
   base: "/blogs/",
   title: "blogs",
-  description: "frontend blogs",
-  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+  description: "frontend blogs ",
+  head: [
+    ["meta", { name: "keywords", content: keywordsContent }],
+    ["link", { rel: "icon", href: "/favicon.ico" }],
+    [
+      "script",
+      {},
+      `
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?5f119d5c29ecc017f9edae04e2425dbe";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+      `,
+    ],
+  ],
   plugins: [
     ["@vuepress/plugin-medium-zoom"],
     ["@vuepress/plugin-back-to-top"],
@@ -39,7 +57,7 @@ export default defineConfig({
               "/2024/vue/Essentials1",
               "/2024/vue/Essentials2",
               "/2024/vue/Essentials3",
-              "/2024/vue/Component1",
+              "/2024/vue/Component",
             ],
           },
           {
@@ -56,7 +74,7 @@ export default defineConfig({
             collapsable: false,
             children: [
               "/2024/translation/SweepAndPrune",
-              "/2024/translation/LearnRegexTheEasyWay",
+              "/2024/translation/GarbageCollection",
             ],
           },
           {

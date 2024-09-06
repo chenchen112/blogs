@@ -10,8 +10,6 @@
 app.config.errorHandler = (err) => {
   /* 处理错误 */
 }
-
-// React 中使用 ErrorBoundary 做错误处理防止应用崩溃
 ```
 
 ## 模板语法
