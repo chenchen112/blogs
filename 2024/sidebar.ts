@@ -46,6 +46,7 @@ const Sidebar2024: SidebarConfigArray[number] = {
             "/2024/reading/SoftSkills/SelfMarketing",
             "/2024/reading/SoftSkills/Learning",
             "/2024/reading/SoftSkills/Productivity",
+            "/2024/reading/SoftSkills/Financing",
           ],
         },
       ],
