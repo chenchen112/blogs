@@ -5,7 +5,7 @@ const isProd = process.env.NODE_ENV === "production";
 const Sidebar2024: SidebarConfigArray[number] = {
   title: "2024",
   children: [
-    !isProd ? "" : "/2024/todo",
+    isProd ? "" : "/2024/todo",
     "/2024/misc/Wechat",
     "/2024/misc/ClassName",
     "/2024/misc/Particle",
