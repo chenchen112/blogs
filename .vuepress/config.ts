@@ -2,14 +2,12 @@ import { defineConfig } from "vuepress/config";
 import Sidebar2024 from "../2024/sidebar";
 import StatScript from "./statScript";
 
-const KeywordsContent = " 博客 frontend vuepress";
-
 export default defineConfig({
   base: "/blogs/",
   title: "blogs",
   description: "frontend blogs ",
   head: [
-    ["meta", { name: "keywords", content: KeywordsContent }],
+    ["meta", { name: "keywords", content: " 前端博客 " }],
     ["link", { rel: "icon", href: "/favicon.ico" }],
     ["script", {}, StatScript],
   ],

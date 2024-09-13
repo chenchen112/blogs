@@ -1,15 +1,17 @@
 import { SidebarConfigArray } from "vuepress/config";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const Sidebar2024: SidebarConfigArray[number] = {
   title: "2024",
   children: [
+    !isProd ? "" : "/2024/todo",
     "/2024/misc/Wechat",
     "/2024/misc/ClassName",
     "/2024/misc/Particle",
     "/2024/misc/JsQuestions",
     {
       title: "Vue",
-      collapsable: false,
       children: [
         "/2024/vue/Introduction",
         "/2024/vue/Essentials1",
@@ -20,7 +22,6 @@ const Sidebar2024: SidebarConfigArray[number] = {
     },
     {
       title: "Lint 配置参考 ",
-      collapsable: false,
       children: [
         "/2024/lint/Eslint",
         "/2024/lint/Prettier",
@@ -29,7 +30,6 @@ const Sidebar2024: SidebarConfigArray[number] = {
     },
     {
       title: " 翻译 ",
-      collapsable: false,
       children: [
         "/2024/translation/SweepAndPrune",
         "/2024/translation/GarbageCollection",
@@ -37,7 +37,6 @@ const Sidebar2024: SidebarConfigArray[number] = {
     },
     {
       title: " 读书笔记 ",
-      collapsable: false,
       children: [
         {
           title: " 软技能：代码之外的生存指南 ",
@@ -47,11 +46,12 @@ const Sidebar2024: SidebarConfigArray[number] = {
             "/2024/reading/SoftSkills/Learning",
             "/2024/reading/SoftSkills/Productivity",
             "/2024/reading/SoftSkills/Financing",
+            "/2024/reading/SoftSkills/Bodybuilding",
+            "/2024/reading/SoftSkills/Spirit",
           ],
         },
       ],
     },
-    "/2024/todo",
   ],
 };
 
