@@ -23,10 +23,10 @@
 ## 准备工作
 
 [ 微信开放平台 ](https://open.weixin.qq.com/cgi-bin/frame?t=home/web_tmpl&lang=zh_CN) 注册并且创建应用，申请接入，成功后会获得 `AppID` 和 `AppSecret`
-<div style="text-align:center"><img src="../img/WXLogin.png"/></div>
+<div align="center"><img src="../img/WXLogin.png"/></div>
 
 ## 请求过程
-<div style="text-align:center"><img src="../img/WXLoginFlow.png"/></div>
+<div align="center"><img src="../img/WXLoginFlow.png"/></div>
 
 ### 获取登录二维码
 

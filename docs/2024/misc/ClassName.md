@@ -161,6 +161,6 @@ const createUniqueIdGenerator = () => {
 
 ## 效果对比
 
-<div style="text-align:center">
-<img src="../img/className_before.png" width="48%"/> <img src="../img/className_after.png" width="48%"/>
-</div>
+|                  压缩前                  |                 压缩后                  |
+| :--------------------------------------: | :-------------------------------------: |
+| ![ 压缩前 ](../img/className_before.png) | ![ 压缩前 ](../img/className_after.png) |
