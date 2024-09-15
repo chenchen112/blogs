@@ -9,7 +9,7 @@ export default defineConfig({
   description: "frontend blogs",
   head: [
     ["meta", { name: "keywords", content: " 前端博客 " }],
-    ["link", { rel: "icon", href: "/favicon.ico" }],
+    ["link", { rel: "icon", href: "/blogs/favicon.ico" }],
     ["script", {}, StatScript],
   ],
   lastUpdated: true,
@@ -24,10 +24,7 @@ export default defineConfig({
       pattern: "'https://github.com/vuejs/vitepress/edit/main/docs/:path'",
       text: "Edit this page on GitHub",
     },
-    lastUpdated: {
-      text: " 更新于 ",
-      formatOptions: { dateStyle: "full", timeStyle: "medium" },
-    },
+    lastUpdated: { text: " 更新于 " },
     docFooter: { prev: " 上一篇 ", next: " 下一篇 " },
     search: { provider: "local" },
   },
