@@ -22,10 +22,11 @@ export default defineConfig({
     socialLinks: [{ icon: "github", link: "https://github.com/chenchen112" }],
     editLink: {
       pattern: "'https://github.com/vuejs/vitepress/edit/main/docs/:path'",
-      text: "Edit this page on GitHub",
+      text: " 编辑 ",
     },
     lastUpdated: { text: " 更新于 " },
     docFooter: { prev: " 上一篇 ", next: " 下一篇 " },
     search: { provider: "local" },
+    outline: { label: " 页面导航 " },
   },
 });
