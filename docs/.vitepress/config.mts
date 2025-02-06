@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
 import Sidebar2024 from "../2024/sidebar";
+import Sidebar2025 from "../2025/sidebar";
 import StatScript from "./statScript";
 
 // https://vitepress.dev/reference/site-config
@@ -17,8 +18,11 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     logo: "/Avatar.jpg",
     siteTitle: " 个人博客 ",
-    nav: [{ text: "2024", link: "/2024/" }],
-    sidebar: [Sidebar2024],
+    nav: [
+      { text: "2024", link: "/2024/" },
+      { text: "2025", link: "/2025/" },
+    ],
+    sidebar: { "/2024/": Sidebar2024, "/2025/": Sidebar2025 },
     socialLinks: [{ icon: "github", link: "https://github.com/chenchen112" }],
     editLink: {
       pattern: "'https://github.com/vuejs/vitepress/edit/main/docs/:path'",
