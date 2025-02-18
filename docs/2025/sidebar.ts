@@ -6,12 +6,15 @@ const Sidebar2025: SidebarItem = {
     {
       text: " 前端开发 ",
       collapsed: true,
-      items: [],
+      items: [
+        { text: " 从 React 到 Vue", link: "/2025/frontend/React" },
+        { text: " 滚动条问题 ", link: "/2025/frontend/Scrollbar" },
+      ],
     },
     {
-      text: " 后端开发 ",
+      text: " 低代码 ",
       collapsed: true,
-      items: [],
+      items: [{ text: " 初识低代码 ", link: "/2025/lowCode/lowCode" }],
     },
 
     {
