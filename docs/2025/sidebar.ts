@@ -9,6 +9,22 @@ const Sidebar2025: SidebarItem = {
       items: [
         { text: " 从 React 到 Vue", link: "/2025/frontend/React" },
         { text: " 滚动条问题 ", link: "/2025/frontend/Scrollbar" },
+        {
+          text: " Webpack 插件 ",
+          link: "/2025/frontend/WebpackPlugin",
+        },
+        {
+          text: " Typescript 移植计划 ",
+          link: "/2025/frontend/TypescriptNativePortToGo",
+        },
+        {
+          text: " Typescript Enum 缺点 ",
+          link: "/2025/frontend/Enum",
+        },
+        {
+          text: " 调试本地 npm 包 ",
+          link: "/2025/frontend/LocalNpmPackage",
+        },
       ],
     },
     {
@@ -39,6 +55,7 @@ const Sidebar2025: SidebarItem = {
       items: [],
     },
     { text: " 入职感受 ", link: "/2025/Onboarding" },
+    { text: " 自言自语 ", link: "/2025/SelfTalking" },
   ],
 };
 
