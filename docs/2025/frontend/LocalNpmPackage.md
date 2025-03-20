@@ -16,7 +16,7 @@
 通过相对或绝对路径引用
 
 ```javascript
-import { Item } from 'C:/packageA//dist'
+import { Item } from 'C:/packageA/dist'
 ```
 
 虽然不用发版了，但是比较危险，万一代码就直接提交了呢，而且 Code Review 时也容易忽略 import
@@ -29,8 +29,8 @@ import { Item } from 'C:/packageA//dist'
 ```json
 {
   "dependencies": {
-    "packageA": "file: 实际包地址 ",
-    // "packageA": "link: 实际包地址 "
+    "packageA": "file: C:/packageA/dist ",
+    // "packageA": "link: C:/packageA/dist "
   }
 }
 ```

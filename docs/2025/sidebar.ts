@@ -25,6 +25,10 @@ const Sidebar2025: SidebarItem = {
           text: " 调试本地 npm 包 ",
           link: "/2025/frontend/LocalNpmPackage",
         },
+        {
+          text: " Husky 替换方案",
+          link: "/2025/frontend/Husky",
+        },
       ],
     },
     {
