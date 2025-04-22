@@ -34,7 +34,10 @@ const Sidebar2025: SidebarItem = {
     {
       text: " 低代码 ",
       collapsed: true,
-      items: [{ text: " 初识低代码 ", link: "/2025/lowCode/lowCode" }],
+      items: [
+        { text: " 初识低代码 ", link: "/2025/lowCode/lowCode" },
+        { text: " 低代码痛点 ", link: "/2025/lowCode/painSpot" },
+      ],
     },
 
     {
@@ -58,7 +61,7 @@ const Sidebar2025: SidebarItem = {
       collapsed: true,
       items: [],
     },
-    { text: " 入职感受 ", link: "/2025/Onboarding" },
+    // { text: " 入职感受 ", link: "/2025/Onboarding" },
     { text: " 自言自语 ", link: "/2025/SelfTalking" },
   ],
 };
