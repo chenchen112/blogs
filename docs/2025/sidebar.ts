@@ -29,6 +29,10 @@ const Sidebar2025: SidebarItem = {
           text: " Husky 替换方案",
           link: "/2025/frontend/Husky",
         },
+        {
+          text: " 业务组件库",
+          link: "/2025/frontend/Components",
+        },
       ],
     },
     {
