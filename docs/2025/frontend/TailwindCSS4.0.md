@@ -1,14 +1,14 @@
 # 关于 Tailwind CSS 4.0
-![TailwindCSS](../img/TailwindCSS.png)
+
 
 ## 入门篇
-![npm trends](../img/TailwindTrend.png)
+![TailwindCSS](../img/TailwindCSS.png)
 
 看一下近几年比较热门的 CSS 框架————Tailwind CSS，简单过了一遍 4.0 的官方文档，以此记录一下。
 
 对比几个流行的 CSS 预处理器，可以看到 Tailwind 已逐渐成为趋势，目前 Github 拥有 `89.6k ✨`
 
-![Color Panel](../img/Color.png)
+![npm trends](../img/TailwindTrend.png)
 
 其使用示例如下：
 
@@ -81,7 +81,7 @@ Tailwind CSS v4.0 部分核心功能依赖于以下版本的浏览器：
     - Lightning CSS：一个使用 Rust 实现的高效的 CSS 解析器、转换器、打包器和压缩工具
 + 由于你的大部分样式都会声明在 HTML 文件内，所以你无需想方设法甚至使用循环来预定义样式，Tailwind CSS 会帮你按需生成
 + 你可以直接使用 Tailwind 提供的颜色调色板
-+ ![](image-1.png)![](https://cdn.nlark.com/yuque/0/2025/png/27520488/1756101193740-f008b1a0-3ac9-429a-9b9d-e55b41ad0345.png)
++ ![Color Panel](../img/Color.png)
 
 #### CSS 模块化
 Tailwind 可以与模块化的 CSS 共存，但是并不建议这么做，原因如下：
