@@ -7,18 +7,18 @@ const Sidebar2025: SidebarItem = {
       text: " 前端开发 ",
       collapsed: true,
       items: [
-        { text: " 从 React 到 Vue", link: "/2025/frontend/React" },
+        { text: "从 React 到 Vue", link: "/2025/frontend/React" },
         { text: " 滚动条问题 ", link: "/2025/frontend/Scrollbar" },
         {
-          text: " Webpack 插件 ",
+          text: "Webpack 插件 ",
           link: "/2025/frontend/WebpackPlugin",
         },
         {
-          text: " Typescript 移植计划 ",
+          text: "Typescript 移植计划 ",
           link: "/2025/frontend/TypescriptNativePortToGo",
         },
         {
-          text: " Typescript Enum 缺点 ",
+          text: "Typescript Enum 缺点 ",
           link: "/2025/frontend/Enum",
         },
         {
@@ -26,12 +26,20 @@ const Sidebar2025: SidebarItem = {
           link: "/2025/frontend/LocalNpmPackage",
         },
         {
-          text: " Husky 替换方案",
+          text: "Husky 替换方案",
           link: "/2025/frontend/Husky",
         },
         {
-          text: " 业务组件库",
+          text: "业务组件库",
           link: "/2025/frontend/Components",
+        },
+        {
+          text: "Vue 响应式失效",
+          link: "/2025/frontend/VueReactive",
+        },
+        {
+          text: "入门 TailwindCSS",
+          link: "/2025/frontend/TailwindCSS4.0",
         },
       ],
     },
