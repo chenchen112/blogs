@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import Sidebar2024 from "../2024/sidebar";
 import Sidebar2025 from "../2025/sidebar";
+import Sidebar2026 from "../2026/sidebar";
 import StatScript from "./statScript";
 
 // https://vitepress.dev/reference/site-config
@@ -21,8 +22,13 @@ export default defineConfig({
     nav: [
       { text: "2024", link: "/2024/" },
       { text: "2025", link: "/2025/" },
+      { text: "2026", link: "/2026/" },
     ],
-    sidebar: { "/2024/": Sidebar2024, "/2025/": Sidebar2025 },
+    sidebar: {
+      "/2024/": [Sidebar2024],
+      "/2025/": [Sidebar2025],
+      "/2026/": [Sidebar2026],
+    },
     socialLinks: [{ icon: "github", link: "https://github.com/chenchen112" }],
     editLink: {
       pattern: "'https://github.com/vuejs/vitepress/edit/main/docs/:path'",
