@@ -6,7 +6,10 @@ const Sidebar2026: SidebarItem = {
     {
       text: "前端开发",
       collapsed: true,
-      items: [{ text: "VsCode 插件开发", link: "/2026/frontend/VsCodePlugin" }],
+      items: [
+        { text: "VsCode 插件开发", link: "/2026/frontend/VsCodePlugin" },
+        { text: "关于 MonoRepo", link: "/2026/frontend/MonoRepo" },
+      ],
     },
     {
       text: "关于AI",
